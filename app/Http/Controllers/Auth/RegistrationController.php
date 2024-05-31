@@ -54,6 +54,7 @@ class RegistrationController extends Controller
             'name' => ['required', 'string','min:5', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required','string']
         ]);
     }
 
@@ -78,28 +79,24 @@ class RegistrationController extends Controller
         return view('auth.furtherRegistration',compact('subjects'));
     }
 
+
+
    
 
     public function registerTeacher(Request $request){
 
         try {
 
+            $user = auth()->user();
             $request->validate([
                 'group' => 'min:5|max:30',
              ]);
+
+             $request->user_id = $user->id;
      
              if(is_null($request->group_id)){
-                 $group = Group::create(['name' => $request->group, 'Group_Uid' => Str::random(5)]);
+                 $group = Group::create(['name' => $request->group, 'Group_Uid' => Str::random(5), 'user_id' => $user->id],);
              }
-     
-             $group_id = $request->group_id ?? $group->id;
-             
-             $user = auth()->user();
-     
-             Teacher::create([
-                 'user_id' =>  $user->id,
-                 'group_id' => $group_id,
-             ]);
 
             $user->assignRole('teacher');
 

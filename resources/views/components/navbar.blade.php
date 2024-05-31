@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="{{ route('home') }}">Anak Kemas</a>
+    <a class="navbar-brand" href="/">AnakKemas</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,13 +13,16 @@
                     <a class="nav-link" href="{{ route('register.form') }}">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <a class="nav-link" href="{{ route('login') }}">Login</a    >
                 </li>
             @endguest
             
             @role('teacher')
                 <li class="nav-item">
-                    <a href="" class="nav-link">Groups</a>
+                    <a href="{{ route('dashboard.teacher') }}" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('group.index') }}" class="nav-link">Group</a>
                 </li>
             @endrole
 

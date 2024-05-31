@@ -37,6 +37,7 @@
                 </span>
             @enderror
         </div>
+
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
@@ -46,9 +47,24 @@
                 </span>
             @enderror
         </div>
+
+      
         <div class="form-group">
             <label for="password_confirmation">Confirm Password</label>
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select name="gender" class="form-control" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            @error('gender')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary btn-block">Register</button>
     </form>

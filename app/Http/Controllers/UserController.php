@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -11,8 +13,16 @@ class UserController extends Controller
      */
     public function index()
     {   
-        $user = auth()->user();
-        return view('profile',compact('user'));
+        $data = [''];
+        $data['user'] = auth()->user();
+
+        if(Auth::user()->hasRole('teacher')){
+          
+            $data['group'] = $data['user']->group ?? null;
+
+            $data['role'] = 'Teacher';
+        }
+        return view('profile',compact('data'));
     }
 
     /**
@@ -52,7 +62,16 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|min:5|max:100',
+            'email' => 'required|email'
+        ]);
+
+        $user->update($validatedData);
+
+        return redirect()->back();
     }
 
     /**

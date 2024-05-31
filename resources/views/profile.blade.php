@@ -14,26 +14,58 @@ Profile
                     User Information
                 </div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> {{ $user->name }}</p>
-                    <p><strong>Email:</strong> {{ $user->email }}</p>
+                  <form action="{{ route('user.update',['id' => $data['user']->id ]) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="" class="label-form">Name</label>
+                        <input type="text" name="name" value="{{ $data['user']->name }}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-form">Email</label>
+                        <input type="email" name="email" value="{{ $data['user']->email }}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="label-form">Role</label>
+                        <input type="text" value="{{ $data['role'] }}" class="form-control" readonly>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
+        @role('teacher')
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Recent Activities
+                    Group Information
                 </div>
+               
                 <div class="card-body">
-                    <!-- Example Activities List -->
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Joined Math Club</li>
-                        <li class="list-group-item">Scored 90% in Science Test</li>
-                        <li class="list-group-item">Participated in School Play</li>
-                    </ul>
+                   <form action="{{ route('group.update',['id' => $data['group']->id]) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="" class="label-form">Uid</label>
+                        <input type="text" class="form-control" value="{{ $data['group']->Group_Uid }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="label-form">Name</label>
+                        <input type="text" class="form-control" name="name" value="{{ $data['group']->name }}">
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                   </form>
                 </div>
             </div>
+            
         </div>
+        @endrole
     </div>
 </div>
 @endsection
