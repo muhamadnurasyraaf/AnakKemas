@@ -8,7 +8,6 @@
     <div class="card rounded w-50">
         <div class="card-header bg-primary text-white d-flex justify-content-between">
             <div>Announcements</div>
-            <a href="{{ route('announcement.create') }}" class="btn btn-secondary">Create new Announcements</a>
         </div>
         <div class="card-body p-4">
             @if(!is_null($data['announcement']) || !empty($data['announcement']))
@@ -36,7 +35,7 @@
     <div class="card rounded-half    w-50">
         <div class="card-header bg-primary text-white d-flex justify-content-between">
             <div>Your Children</div>
-            <a href="" class="btn btn-secondary">Assign a Children</a>
+            <a href="{{ route('student.assign') }}" class="btn btn-secondary">Assign a Children</a>
         </div>
         <table class="table table-striped table-bordered">
             <thead>

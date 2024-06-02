@@ -33,6 +33,8 @@ Route::get('profile',[UserController::class,'index'])->name('profile')->middlewa
 
 Route::get('student/{id}create',[StudentController::class,'create'])->name('student.create')->middleware('auth');
 
+Route::get('student/assign',[StudentController::class,'assignForm'])->name('student.assign');
+
 Route::post('report/store',[ReportController::class,'store'])->name('report.store');
 Route::get('student/{id}/report/create',[ReportController::class,'create'])->name('student.report.create');
 Route::post('student/store',[StudentController::class,'store'])->name('student.store');

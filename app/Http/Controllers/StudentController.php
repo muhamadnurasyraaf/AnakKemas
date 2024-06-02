@@ -33,6 +33,10 @@ class StudentController extends Controller
         return redirect()->route('dashboard.teacher')->with('success', 'Student created successfully.');
     }
 
+    public function assignForm(){
+        return view('Student.assign');
+    }
+
     public function edit($id){
         $student = Student::find($id);
 
