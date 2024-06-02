@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <tbody>
-               @if(!is_null($data['assessment']) || !empty($data['assessment']))
+               @if(!is_null($data['assessment']) && $data['assessment']->isNotEmpty())
                 @foreach ($data['assessment'] as $assign )
                         <tr>
                             <td>{{ $assign->title }}</td>

@@ -24,15 +24,6 @@
                     <form id="teacherForm" class="user-form" method="POST" action="{{ route('register.teacher') }}" style="display:none;">
                         @csrf
                         <div class="form-group">
-                            <label for="" class="label-form">Subject</label>
-                            <select name="subject" class="form-control" id="">
-                                <option value="">Choose your subject</option>
-                                @foreach ($subjects as $sub )
-                                    <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for="" class="label-form">Create new Group</label>
                             <input type="text" name="group" class="form-control">
                         </div>

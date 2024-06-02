@@ -25,6 +25,11 @@ Profile
                         <label for="" class="label-form">Email</label>
                         <input type="email" name="email" value="{{ $data['user']->email }}" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="" class="label-form">Gender</label>
+                        <input type="text" name="gender" class="form-control" value="{{ $data['user']->gender }}" readonly>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="" class="label-form">Role</label>
@@ -41,7 +46,7 @@ Profile
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    Group Information
+                    Teacher Information
                 </div>
                
                 <div class="card-body">
@@ -56,13 +61,31 @@ Profile
                         <label for="" class="label-form">Name</label>
                         <input type="text" class="form-control" name="name" value="{{ $data['group']->name }}">
                     </div>
-
+                   
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                    </form>
                 </div>
             </div>
+
+            <div class="card mt-4">
+                <div class="d-flex justify-content-between card-header">
+                    <div>Subjects</div>
+                    <a href="{{ route('user.subject.form') }}">Add Subjects</a>
+                </div>
+               
+                <div class="card-body">
+                    @if(!empty($data['subjects']) && $data['subjects']->isNotEmpty())
+                        @foreach ($data['subjects'] as $subject )
+                        <div>{{ $subject->subject->name }}</div>
+                        @endforeach
+                    
+                    @else
+                        <div>No Subject Registered yet</div>
+                    @endif
+                </div>
+               </div>
             
         </div>
         @endrole

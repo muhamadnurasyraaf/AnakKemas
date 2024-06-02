@@ -14,14 +14,12 @@ class SubjectSeeder extends Seeder
     public function run(): void
     {
         $subjects = [
-            ['name' => 'Mathematics'],
-            ['name' => 'Science'],
-            ['name' => 'History'],
-            ['name' => 'Geography'],
-            ['name' => 'English'],
-            ['name' => 'Physical Education'],
-            ['name' => 'Art'],
-            ['name' => 'Music'],
+            ['name' =>'Bahasa Melayu'],
+            ['name' => 'Bahasa Inggeris'],
+            ['name' => 'Aktiviti Luar'],
+            ['name' => 'Pendidikan Islam'],
+            ['name' => 'Matematik Awal'],
+           ['name' => 'Pembelajaran Bersepadu']
         ];
 
         foreach($subjects as $subject){

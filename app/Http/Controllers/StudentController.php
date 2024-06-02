@@ -19,7 +19,6 @@ class StudentController extends Controller
         // Validate the form data
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:students',
             'age' => 'required|numeric',
             'group_id' => 'required'
         ]);

@@ -21,6 +21,8 @@ class UserController extends Controller
             $data['group'] = $data['user']->group ?? null;
 
             $data['role'] = 'Teacher';
+
+            $data['subjects'] = $data['user']->subjects()->with('subject')->get(); 
         }
 
         if(Auth::user()->hasRole('guardian')){ $data['role'] = 'Guardian';}

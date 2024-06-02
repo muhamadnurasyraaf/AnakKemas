@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('Uid');
             $table->string('name');
-            $table->string('email')->nullable()->unique();
             $table->integer('age');
             $table->unsignedBigInteger('guardian_id')->nullable();
             $table->foreignId('group_id')->references('id')->on('groups')->onDelete('cascade');

@@ -14,7 +14,7 @@ Student
                 <div>Name : {{ $student->name }}</div>
                 <div>Email : {{ $student->email }}</div>
                 <div>Age : {{ $student->age }}</div>
-                <div>Group : {{ $student->group->name }}</div>
+                <div>Group : {{ $student->group->name }} (Teacher : <a href="{{ route('teacher.show',['id' => $student->group->user->id]) }}">{{ $student->group->user->name }}</a> )</div>
             </div>
         </div>
 

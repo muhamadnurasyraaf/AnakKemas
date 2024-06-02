@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\AssessmentController;
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegistrationController;
-use App\Http\Controllers\GroupController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\UserSubjectController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\Auth\RegistrationController;
 
 Route::get('/', function () {
     return view('home');
@@ -27,6 +29,7 @@ Route::put('user/{id}/update',[UserController::class,'update'])->name('user.upda
 
 Route::get('register-type',[RegistrationController::class,'registerTypeForm'])->name('register.type')->middleware('auth');
 
+Route::get('teacher/{id}/show',[TeacherController::class,'show'])->name('teacher.show');
 Route::post('register-teacher',[RegistrationController::class,'registerTeacher'])->name('register.teacher')->middleware('auth');
 Route::post('register-guardian',[RegistrationController::class,'registerGuardian'])->name('register.guardian')->middleware('auth');
 Route::get('profile',[UserController::class,'index'])->name('profile')->middleware('auth');
@@ -34,6 +37,12 @@ Route::get('profile',[UserController::class,'index'])->name('profile')->middlewa
 Route::get('student/{id}create',[StudentController::class,'create'])->name('student.create')->middleware('auth');
 
 Route::get('student/assign',[StudentController::class,'assignForm'])->name('student.assign');
+
+
+Route::get('user_subject/form',[UserSubjectController::class,'index'])->name('user.subject.form');
+
+Route::post('user/subject/add',[UserSubjectController::class,'addSubject'])->name('user.subject.add');
+Route::delete('user/subject/remove',[UserSubjectController::class,'removeSubject'])->name('user.subject.remove');
 
 Route::post('report/store',[ReportController::class,'store'])->name('report.store');
 Route::get('student/{id}/report/create',[ReportController::class,'create'])->name('student.report.create');
