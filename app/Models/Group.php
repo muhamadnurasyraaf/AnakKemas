@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Student;
+use App\Models\Announcement;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -23,5 +24,9 @@ class Group extends Model
 
     public function students(){
         return $this->hasMany(Student::class,'group_id');
+    }
+
+    public function announcements(){
+        return $this->hasMany(Announcement::class,'group_id');
     }
 }

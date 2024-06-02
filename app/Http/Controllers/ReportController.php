@@ -2,37 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Report;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class ReportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {   
-        $data = [''];
-        $data['user'] = auth()->user();
-
-        if(Auth::user()->hasRole('teacher')){
-          
-            $data['group'] = $data['user']->group ?? null;
-
-            $data['role'] = 'Teacher';
-        }
-
-        if(Auth::user()->hasRole('guardian')){ $data['role'] = 'Guardian';}
-        return view('profile',compact('data'));
+    {
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $student = Student::find($id);
+        return view('report.create',compact('student'));
     }
 
     /**
@@ -40,7 +31,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'student_id' => 'required'
+        ]);
+        
+        $data['reportedBy'] = Auth::user()->id;
+
+        Report::create($data);
+
+        return redirect()->route('dashboard.teacher');
     }
 
     /**
@@ -64,16 +66,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
-
-        $validatedData = $request->validate([
-            'name' => 'required|min:5|max:100',
-            'email' => 'required|email'
-        ]);
-
-        $user->update($validatedData);
-
-        return redirect()->back();
+        //
     }
 
     /**

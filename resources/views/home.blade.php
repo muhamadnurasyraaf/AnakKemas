@@ -26,15 +26,19 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark  bg-primary text-white">
-        <a class="navbar-brand" href="#">Anak Kemas</a>
+        <a class="navbar-brand" href="#">AnakKemas</a>
     </nav>
-
     <!-- Hero Section -->
     <div class="hero-section">
         <div class="container">
             <h1>Welcome to Anak Kemas</h1>
             <p>Monitor your child's academic performance, activities, and assessments all in one place.</p>
+            @guest
             <a href="/register" class="btn btn-primary btn-get-started">Get Started</a>
+            @endguest
+           @auth
+            <a href="profile" class="btn btn-primary btn-get-started">Your Profile</a>
+           @endauth 
         </div>
     </div>
 

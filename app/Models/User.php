@@ -50,7 +50,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function student(){
+    public function students(){
         return $this->hasMany(Student::class,'guardian_id');
     }
 

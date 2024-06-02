@@ -54,6 +54,15 @@ class StudentController extends Controller
         return redirect()->route('group.index');
     }
 
+    public function show($id){
+        
+        $student = Student::with(['assessments','group.announcements','reports.reporter'])->find($id);
+
+        return view('student.index',compact('student'));
+    }
+
+    
+
     public function delete($id){
         try{
             $student = Student::find($id);

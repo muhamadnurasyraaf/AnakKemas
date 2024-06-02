@@ -26,19 +26,13 @@
                 </li>
             @endrole
 
-            @auth
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="notificationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Notifications <span class="badge badge-light">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
-                        <a class="dropdown-item" href="#">New message from teacher</a>
-                        <a class="dropdown-item" href="#">Homework due tomorrow</a>
-                        <a class="dropdown-item" href="#">Upcoming parent-teacher meeting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">See all notifications</a>
-                    </div>
+            @role('guardian')
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.guardian') }}" class="nav-link">Dashboard</a>
                 </li>
+            @endrole
+
+            @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ Auth::user()->name }}

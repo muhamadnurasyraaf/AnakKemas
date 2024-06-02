@@ -33,21 +33,23 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="" class="label-form">Enter Group Id</label>
-                            <input type="text" name="group_id" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="label-form">or Create new Group</label>
+                            <label for="" class="label-form">Create new Group</label>
                             <input type="text" name="group" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-primary">{{ __('Register as Teacher') }}</button>
                     </form>
 
-                    <form id="guardianForm" class="user-form" method="POST" action="" style="display:none;">
+                    <form id="guardianForm" class="user-form" method="POST" action="{{ route('register.guardian') }}" style="display:none;">
                         @csrf
                         <div class="form-group">
                             <label for="" class="label-form">Enter your children student's ID</label>
                             <input type="text" class="form-control" name="student_id" placeholder="Student Id">
+                              
+                                @if ($errors->has('student_id'))
+                                <span class="text-danger">
+                                    {{ $errors->first('student_id') }}
+                                </span>
+                            @endif
                         </div>
                         <button type="submit" class="btn btn-primary">{{ __('Register as Guardian') }}</button>
                     </form>

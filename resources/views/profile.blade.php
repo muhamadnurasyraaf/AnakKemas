@@ -28,7 +28,7 @@ Profile
 
                     <div class="form-group">
                         <label for="" class="label-form">Role</label>
-                        <input type="text" value="{{ $data['role'] }}" class="form-control" readonly>
+                        <input type="text" value="{{ $data['role'] ?? 'n/a' }}" class="form-control" readonly>
                     </div>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Save Changes</button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
 use Illuminate\Support\Str;
@@ -70,6 +71,7 @@ class RegistrationController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'gender' => $data['gender']
         ]);
     }
 
@@ -105,5 +107,24 @@ class RegistrationController extends Controller
             dd($e->getMessage());
         }
 
+    }
+
+    public function registerGuardian(Request $request){
+
+        $user = auth()->user();
+
+        $student = Student::where('Uid',$request->student_id)->first();
+
+
+        if (!$student) {
+            return redirect()->back()->withErrors(['student_id' => 'Student not found.']);
+        }
+        $student->guardian_id = $user->id;
+
+        $student->save();
+
+        $user->assignRole('guardian');
+
+        return redirect()->route('profile');
     }
 }

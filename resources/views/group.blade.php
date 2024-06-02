@@ -42,6 +42,7 @@ Group
                         <td>
                             <ul class="list-group" style="list-style-type: none;">
                                 <li class=""><a href="{{ route('student.edit',['id' => $student->id]) }}">Edit</a></li>
+                                <li><a href="{{ route('student.report.create',['id' => $student->id]) }}">Report</a></li>
                             </ul>
                         </td>
                     </tr>
