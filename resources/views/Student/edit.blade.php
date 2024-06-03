@@ -24,17 +24,6 @@
                </div>
                <div class="form-group">
                 <label for="" class="label-form">
-                    Email
-                </label>
-                <input type="email" name="email" class="form-control @error('email')
-                    is-invalid
-                @enderror" value="{{ $student->email }}">
-                @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-               </div>
-               <div class="form-group">
-                <label for="" class="label-form">
                     Age
                 </label>
                 <input type="text" name="age" class="form-control @error('age') is-invalid @enderror" value="{{ $student->age }}">
